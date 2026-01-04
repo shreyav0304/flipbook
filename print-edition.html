@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our College Journey - Premium Flipbook</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        @page {
+            size: A5;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Trebuchet MS', sans-serif;
+            background: white;
+        }
+
+        .flipbook-page {
+            width: 100%;
+            height: 210mm;
+            page-break-after: always;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            background: white;
+            padding: 0;
+            margin: 0;
+        }
+
+        .page-number {
+            position: relative;
+            bottom: auto;
+            right: auto;
+            transform: none;
+            font-size: 8pt;
+            color: #666;
+            font-weight: 700;
+            background: transparent;
+            padding: 0 8px 8px 8px;
+            border-radius: 0;
+            margin: 0;
+            order: 3;
+            text-align: center;
+            width: 100%;
+        }
+
+        /* Cover Page */
+        .cover-page {
+            background: white;
+            text-align: center;
+            justify-content: center;
+        }
+
+        .cover-content {
+            width: 400px;
+            height: 400px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: 1px solid #ddd;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .book-title {
+            font-size: 1.8rem;
+            color: #ffffff;
+            margin: 0;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .book-subtitle {
+            font-size: 0.9rem;
+            color: #e8e0f5;
+            margin: 5px 0;
+            font-weight: 300;
+        }
+
+        .cover-decoration {
+            font-size: 3rem;
+            margin: 0;
+            filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.2));
+        }
+
+        .instructions {
+            font-size: 0.75rem;
+            color: #ffffff;
+            max-width: 90%;
+            line-height: 1.5;
+            font-weight: 500;
+            background: rgba(0, 0, 0, 0.15);
+            padding: 10px;
+            border-radius: 5px;
+            backdrop-filter: blur(10px);
+            margin: 0;
+        }
+
+        /* Illustration Page */
+        .illustration-main {
+            width: 400px;
+            height: 400px;
+            border: 1px solid #ddd;
+            background: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0;
+            margin: 0;
+            position: relative;
+        }
+
+        .scene-label {
+            font-size: 0.65rem;
+            color: #999;
+            margin: 0;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 8px 8px 0 8px;
+            text-align: center;
+            order: 1;
+            width: 100%;
+        }
+
+        .flipbook-canvas {
+            width: 360px;
+            height: 320px;
+            border: none;
+            background: white;
+            box-shadow: none;
+            border-radius: 0;
+            margin: 0;
+            padding: 0;
+            order: 2;
+        }
+
+        /* Back Cover */
+        .back-cover {
+            background: white;
+            text-align: center;
+            justify-content: center;
+        }
+
+        .back-content {
+            width: 400px;
+            height: 400px;
+            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+            border: 1px solid #ddd;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .back-title {
+            font-size: 1.5rem;
+            color: #ffffff;
+            margin: 0 0 10px 0;
+            font-weight: 700;
+        }
+
+        .back-message {
+            font-size: 0.8rem;
+            color: #e8e0f5;
+            margin-bottom: 15mm;
+            font-weight: 400;
+            line-height: 1.8;
+            max-width: 100mm;
+        }
+
+        .closing-decoration {
+            font-size: 1.8rem;
+            margin: 0;
+        }
+
+        .closing-quote {
+            font-size: 0.7rem;
+            color: #e8e0f5;
+            font-style: italic;
+            margin: 10px 0;
+            max-width: 90%;
+            padding: 0;
+        }
+
+        .date-footer {
+            font-size: 0.65rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin: 0;
+        }
+
+        /* Print optimizations */
+        @media print {
+            body {
+                background: white;
+            }
+            .flipbook-page {
+                box-shadow: none;
+                border: none;
+            }
+            .flipbook-canvas {
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Cover Page -->
+    <div class="flipbook-page cover-page">
+        <div class="cover-content">
+            <div class="cover-decoration">🎓</div>
+            <h1 class="book-title">Our College Journey</h1>
+            <p class="book-subtitle">A Memory to Cherish Forever</p>
+            <p class="instructions">✨ Flip these pages quickly from top to bottom to watch our story come to life! ✨</p>
+        </div>
+    </div>
+
+    <!-- Scene 1: Campus Gate Walk (7 frames) -->
+    <div class="flipbook-page" data-scene="1">
+        <div class="illustration-main">
+            <p class="scene-label">Scene 1: First Day at Campus</p>
+            <canvas id="frame-1-1" class="flipbook-canvas" width="600" height="600"></canvas>
+            <div class="page-number">2</div>
+        </div>
+    </div>
+    <div class="flipbook-page" data-scene="1">
+        <div class="illustration-main">
+            <canvas id="frame-1-2" class="flipbook-canvas" width="600" height="600"></canvas>
+            <div class="page-number">3</div>
+        </div>
+    </div>
+    <div class="flipbook-page" data-scene="1"><div class="illustration-main"><canvas id="frame-1-3" class="flipbook-canvas" width="600" height="600"></canvas><div class="page-number">4</div></div></div>
+    <div class="flipbook-page" data-scene="1"><div class="illustration-main"><canvas id="frame-1-4" class="flipbook-canvas" width="600" height="600"></canvas><div class="page-number">5</div></div></div>
+    <div class="flipbook-page" data-scene="1"><div class="illustration-main"><canvas id="frame-1-5" class="flipbook-canvas" width="600" height="600"></canvas><div class="page-number">6</div></div></div>
+    <div class="flipbook-page" data-scene="1"><div class="illustration-main"><canvas id="frame-1-6" class="flipbook-canvas" width="600" height="600"></canvas><div class="page-number">7</div></div></div>
+    <div class="flipbook-page" data-scene="1"><div class="illustration-main"><canvas id="frame-1-7" class="flipbook-canvas" width="600" height="600"></canvas><div class="page-number">8</div></div></div>
+
+    <!-- Scene 2: Two Friends Meeting (7 frames) -->
+    <div class="flipbook-page" data-scene="2"><div class="illustration-main"><p class="scene-label">Scene 2: Meeting a Best Friend</p><canvas id="frame-2-1" class="flipbook-canvas" width="600" height="600"></canvas><div class="page-number">9</div></div></div>
+    <div class="flipbook-page" data-scene="2"><div class="illustration-main"><canvas id="frame-2-2" class="flipbook-canvas" width="600" height="600"></canvas><div class="page-number">10</div></div></div>
+    <div class="flipbook-page" data-scene="2"><div class="illustration-main"><canvas id="frame-2-3" class="flipbook-canvas" width="600" height="600"></canvas><div class="page-number">11</div></div></div>
+    <div class="flipbook-page" data-scene="2"><div class="illustration-main"><canvas id="frame-2-4" class="flipbook-canvas" width="600" height="600"></canvas><div class="page-number">12</div></div></div>
+    <div class="flipbook-page" data-scene="2"><div class="illustration-main"><canvas id="frame-2-5" class="flipbook-canvas" width="600" height="600"></canvas><div class="page-number">13</div></div></div>
+    <div class="flipbook-page" data-scene="2"><div class="illustration-main"><canvas id="frame-2-6" class="flipbook-canvas" width="600" height="600"></canvas><div class="page-number">14</div></div></div>
+    <div class="flipbook-page" data-scene="2"><div class="illustration-main"><canvas id="frame-2-7" class="flipbook-canvas" width="600" height="600"></canvas><div class="page-number">15</div></div></div>
+
+    <!-- Scene 3: Library (6 frames) -->
+    <div class="flipbook-page" data-scene="3"><div class="illustration-main"><p class="scene-label">Scene 3: Library Study Sessions</p><canvas id="frame-3-1" class="flipbook-canvas" width="600" height="600"></canvas><div class="page-number">16</div></div></div>
+    <div class="flipbook-page" data-scene="3"><div class="illustration-main"><canvas id="frame-3-2" class="flipbook-canvas" width="600" height="600"></canvas><div class="page-number">17</div></div></div>
+    <div class="flipbook-page" data-scene="3"><div class="illustration-main"><canvas id="frame-3-3" class="flipbook-canvas" width="600" height="600"></canvas><div class="page-number">18</div></div></div>
+    <div class="flipbook-page" data-scene="3"><div class="illustration-main"><canvas id="frame-3-4" class="flipbook-canvas" width="600" height="600"></canvas><div class="page-number">19</div></div></div>
+    <div class="flipbook-page" data-scene="3"><div class="illustration-main"><canvas id="frame-3-5" class="flipbook-canvas" width="600" height="600"></canvas><div class="page-number">20</div></div></div>
+    <div class="flipbook-page" data-scene="3"><div class="illustration-main"><canvas id="frame-3-6" class="flipbook-canvas" width="600" height="600"></canvas><div class="page-number">21</div></div></div>
+
+    <!-- Scene 4: Canteen (6 frames) -->
+    <div class="flipbook-page" data-scene="4"><div class="illustration-main"><p class="scene-label">Scene 4: Lunch & Laughter</p><canvas id="frame-4-1" class="flipbook-canvas" width="600" height="600"></canvas><div class="page-number">22</div></div></div>
+    <div class="flipbook-page" data-scene="4"><div class="illustration-main"><canvas id="frame-4-2" class="flipbook-canvas" width="600" height="600"></canvas><div class="page-number">23</div></div></div>
+    <div class="flipbook-page" data-scene="4"><div class="illustration-main"><canvas id="frame-4-3" class="flipbook-canvas" width="600" height="600"></canvas><div class="page-number">24</div></div></div>
+    <div class="flipbook-page" data-scene="4"><div class="illustration-main"><canvas id="frame-4-4" class="flipbook-canvas" width="600" height="600"></canvas><div class="page-number">25</div></div></div>
+    <div class="flipbook-page" data-scene="4"><div class="illustration-main"><canvas id="frame-4-5" class="flipbook-canvas" width="600" height="600"></canvas><div class="page-number">26</div></div></div>
+    <div class="flipbook-page" data-scene="4"><div class="illustration-main"><canvas id="frame-4-6" class="flipbook-canvas" width="600" height="600"></canvas><div class="page-number">27</div></div></div>
+
+    <!-- Scene 5: College Fest (8 frames) -->
+    <div class="flipbook-page" data-scene="5"><div class="illustration-main"><p class="scene-label">Scene 5: Festival Night Magic</p><canvas id="frame-5-1" class="flipbook-canvas" width="600" height="600"></canvas><div class="page-number">28</div></div></div>
+    <div class="flipbook-page" data-scene="5"><div class="illustration-main"><canvas id="frame-5-2" class="flipbook-canvas" width="600" height="600"></canvas><div class="page-number">29</div></div></div>
+    <div class="flipbook-page" data-scene="5"><div class="illustration-main"><canvas id="frame-5-3" class="flipbook-canvas" width="600" height="600"></canvas><div class="page-number">30</div></div></div>
+    <div class="flipbook-page" data-scene="5"><div class="illustration-main"><canvas id="frame-5-4" class="flipbook-canvas" width="600" height="600"></canvas><div class="page-number">31</div></div></div>
+    <div class="flipbook-page" data-scene="5"><div class="illustration-main"><canvas id="frame-5-5" class="flipbook-canvas" width="600" height="600"></canvas><div class="page-number">32</div></div></div>
+    <div class="flipbook-page" data-scene="5"><div class="illustration-main"><canvas id="frame-5-6" class="flipbook-canvas" width="600" height="600"></canvas><div class="page-number">33</div></div></div>
+    <div class="flipbook-page" data-scene="5"><div class="illustration-main"><canvas id="frame-5-7" class="flipbook-canvas" width="600" height="600"></canvas><div class="page-number">34</div></div></div>
+    <div class="flipbook-page" data-scene="5"><div class="illustration-main"><canvas id="frame-5-8" class="flipbook-canvas" width="600" height="600"></canvas><div class="page-number">35</div></div></div>
+
+    <!-- Scene 6: Rainy Day (6 frames) -->
+    <div class="flipbook-page" data-scene="6"><div class="illustration-main"><p class="scene-label">Scene 6: Dancing in the Rain</p><canvas id="frame-6-1" class="flipbook-canvas" width="600" height="600"></canvas><div class="page-number">36</div></div></div>
+    <div class="flipbook-page" data-scene="6"><div class="illustration-main"><canvas id="frame-6-2" class="flipbook-canvas" width="600" height="600"></canvas><div class="page-number">37</div></div></div>
+    <div class="flipbook-page" data-scene="6"><div class="illustration-main"><canvas id="frame-6-3" class="flipbook-canvas" width="600" height="600"></canvas><div class="page-number">38</div></div></div>
+    <div class="flipbook-page" data-scene="6"><div class="illustration-main"><canvas id="frame-6-4" class="flipbook-canvas" width="600" height="600"></canvas><div class="page-number">39</div></div></div>
+    <div class="flipbook-page" data-scene="6"><div class="illustration-main"><canvas id="frame-6-5" class="flipbook-canvas" width="600" height="600"></canvas><div class="page-number">40</div></div></div>
+    <div class="flipbook-page" data-scene="6"><div class="illustration-main"><canvas id="frame-6-6" class="flipbook-canvas" width="600" height="600"></canvas><div class="page-number">41</div></div></div>
+
+    <!-- Scene 7: Late Night Study (6 frames) -->
+    <div class="flipbook-page" data-scene="7"><div class="illustration-main"><p class="scene-label">Scene 7: Coffee & Midnight Dreams</p><canvas id="frame-7-1" class="flipbook-canvas" width="600" height="600"></canvas><div class="page-number">42</div></div></div>
+    <div class="flipbook-page" data-scene="7"><div class="illustration-main"><canvas id="frame-7-2" class="flipbook-canvas" width="600" height="600"></canvas><div class="page-number">43</div></div></div>
+    <div class="flipbook-page" data-scene="7"><div class="illustration-main"><canvas id="frame-7-3" class="flipbook-canvas" width="600" height="600"></canvas><div class="page-number">44</div></div></div>
+    <div class="flipbook-page" data-scene="7"><div class="illustration-main"><canvas id="frame-7-4" class="flipbook-canvas" width="600" height="600"></canvas><div class="page-number">45</div></div></div>
+    <div class="flipbook-page" data-scene="7"><div class="illustration-main"><canvas id="frame-7-5" class="flipbook-canvas" width="600" height="600"></canvas><div class="page-number">46</div></div></div>
+    <div class="flipbook-page" data-scene="7"><div class="illustration-main"><canvas id="frame-7-6" class="flipbook-canvas" width="600" height="600"></canvas><div class="page-number">47</div></div></div>
+
+    <!-- Scene 8: Exams (6 frames) -->
+    <div class="flipbook-page" data-scene="8"><div class="illustration-main"><p class="scene-label">Scene 8: Exam Hall to Victory</p><canvas id="frame-8-1" class="flipbook-canvas" width="600" height="600"></canvas><div class="page-number">48</div></div></div>
+    <div class="flipbook-page" data-scene="8"><div class="illustration-main"><canvas id="frame-8-2" class="flipbook-canvas" width="600" height="600"></canvas><div class="page-number">49</div></div></div>
+    <div class="flipbook-page" data-scene="8"><div class="illustration-main"><canvas id="frame-8-3" class="flipbook-canvas" width="600" height="600"></canvas><div class="page-number">50</div></div></div>
+    <div class="flipbook-page" data-scene="8"><div class="illustration-main"><canvas id="frame-8-4" class="flipbook-canvas" width="600" height="600"></canvas><div class="page-number">51</div></div></div>
+    <div class="flipbook-page" data-scene="8"><div class="illustration-main"><canvas id="frame-8-5" class="flipbook-canvas" width="600" height="600"></canvas><div class="page-number">52</div></div></div>
+    <div class="flipbook-page" data-scene="8"><div class="illustration-main"><canvas id="frame-8-6" class="flipbook-canvas" width="600" height="600"></canvas><div class="page-number">53</div></div></div>
+
+    <!-- Scene 9: Final Year Walk (6 frames) -->
+    <div class="flipbook-page" data-scene="9"><div class="illustration-main"><p class="scene-label">Scene 9: Confidently Moving Forward</p><canvas id="frame-9-1" class="flipbook-canvas" width="600" height="600"></canvas><div class="page-number">54</div></div></div>
+    <div class="flipbook-page" data-scene="9"><div class="illustration-main"><canvas id="frame-9-2" class="flipbook-canvas" width="600" height="600"></canvas><div class="page-number">55</div></div></div>
+    <div class="flipbook-page" data-scene="9"><div class="illustration-main"><canvas id="frame-9-3" class="flipbook-canvas" width="600" height="600"></canvas><div class="page-number">56</div></div></div>
+    <div class="flipbook-page" data-scene="9"><div class="illustration-main"><canvas id="frame-9-4" class="flipbook-canvas" width="600" height="600"></canvas><div class="page-number">57</div></div></div>
+    <div class="flipbook-page" data-scene="9"><div class="illustration-main"><canvas id="frame-9-5" class="flipbook-canvas" width="600" height="600"></canvas><div class="page-number">58</div></div></div>
+    <div class="flipbook-page" data-scene="9"><div class="illustration-main"><canvas id="frame-9-6" class="flipbook-canvas" width="600" height="600"></canvas><div class="page-number">59</div></div></div>
+
+    <!-- Scene 10: Graduation (7 frames) -->
+    <div class="flipbook-page" data-scene="10"><div class="illustration-main"><p class="scene-label">Scene 10: Graduation Day Glory</p><canvas id="frame-10-1" class="flipbook-canvas" width="600" height="600"></canvas><div class="page-number">60</div></div></div>
+    <div class="flipbook-page" data-scene="10"><div class="illustration-main"><canvas id="frame-10-2" class="flipbook-canvas" width="600" height="600"></canvas><div class="page-number">61</div></div></div>
+    <div class="flipbook-page" data-scene="10"><div class="illustration-main"><canvas id="frame-10-3" class="flipbook-canvas" width="600" height="600"></canvas><div class="page-number">62</div></div></div>
+    <div class="flipbook-page" data-scene="10"><div class="illustration-main"><canvas id="frame-10-4" class="flipbook-canvas" width="600" height="600"></canvas><div class="page-number">63</div></div></div>
+    <div class="flipbook-page" data-scene="10"><div class="illustration-main"><canvas id="frame-10-5" class="flipbook-canvas" width="600" height="600"></canvas><div class="page-number">64</div></div></div>
+    <div class="flipbook-page" data-scene="10"><div class="illustration-main"><canvas id="frame-10-6" class="flipbook-canvas" width="600" height="600"></canvas><div class="page-number">65</div></div></div>
+    <div class="flipbook-page" data-scene="10"><div class="illustration-main"><canvas id="frame-10-7" class="flipbook-canvas" width="600" height="600"></canvas><div class="page-number">66</div></div></div>
+
+    <!-- Scene 11: Cap Toss (8 frames) -->
+    <div class="flipbook-page" data-scene="11"><div class="illustration-main"><p class="scene-label">Scene 11: Caps in the Sky</p><canvas id="frame-11-1" class="flipbook-canvas" width="600" height="600"></canvas><div class="page-number">67</div></div></div>
+    <div class="flipbook-page" data-scene="11"><div class="illustration-main"><canvas id="frame-11-2" class="flipbook-canvas" width="600" height="600"></canvas><div class="page-number">68</div></div></div>
+    <div class="flipbook-page" data-scene="11"><div class="illustration-main"><canvas id="frame-11-3" class="flipbook-canvas" width="600" height="600"></canvas><div class="page-number">69</div></div></div>
+    <div class="flipbook-page" data-scene="11"><div class="illustration-main"><canvas id="frame-11-4" class="flipbook-canvas" width="600" height="600"></canvas><div class="page-number">70</div></div></div>
+    <div class="flipbook-page" data-scene="11"><div class="illustration-main"><canvas id="frame-11-5" class="flipbook-canvas" width="600" height="600"></canvas><div class="page-number">71</div></div></div>
+    <div class="flipbook-page" data-scene="11"><div class="illustration-main"><canvas id="frame-11-6" class="flipbook-canvas" width="600" height="600"></canvas><div class="page-number">72</div></div></div>
+    <div class="flipbook-page" data-scene="11"><div class="illustration-main"><canvas id="frame-11-7" class="flipbook-canvas" width="600" height="600"></canvas><div class="page-number">73</div></div></div>
+    <div class="flipbook-page" data-scene="11"><div class="illustration-main"><canvas id="frame-11-8" class="flipbook-canvas" width="600" height="600"></canvas><div class="page-number">74</div></div></div>
+
+    <!-- Scene 12: Walking Away Sunset (7 frames) -->
+    <div class="flipbook-page" data-scene="12"><div class="illustration-main"><p class="scene-label">Scene 12: Sunset Goodbye</p><canvas id="frame-12-1" class="flipbook-canvas" width="600" height="600"></canvas><div class="page-number">75</div></div></div>
+    <div class="flipbook-page" data-scene="12"><div class="illustration-main"><canvas id="frame-12-2" class="flipbook-canvas" width="600" height="600"></canvas><div class="page-number">76</div></div></div>
+    <div class="flipbook-page" data-scene="12"><div class="illustration-main"><canvas id="frame-12-3" class="flipbook-canvas" width="600" height="600"></canvas><div class="page-number">77</div></div></div>
+    <div class="flipbook-page" data-scene="12"><div class="illustration-main"><canvas id="frame-12-4" class="flipbook-canvas" width="600" height="600"></canvas><div class="page-number">78</div></div></div>
+    <div class="flipbook-page" data-scene="12"><div class="illustration-main"><canvas id="frame-12-5" class="flipbook-canvas" width="600" height="600"></canvas><div class="page-number">79</div></div></div>
+    <div class="flipbook-page" data-scene="12"><div class="illustration-main"><canvas id="frame-12-6" class="flipbook-canvas" width="600" height="600"></canvas><div class="page-number">80</div></div></div>
+    <div class="flipbook-page" data-scene="12"><div class="illustration-main"><canvas id="frame-12-7" class="flipbook-canvas" width="600" height="600"></canvas><div class="page-number">81</div></div></div>
+
+    <!-- Back Cover -->
+    <div class="flipbook-page back-cover">
+        <div class="back-content">
+            <h2 class="back-title">The Journey Continues...</h2>
+            <p class="closing-quote">"College isn't just about the degree, it's about the people we meet and the memories we create together."</p>
+            <div class="closing-decoration">💙 ✨ 🎓</div>
+            <p class="back-message">Thank you for these unforgettable moments. Here's to friendship, growth, and all the adventures ahead!</p>
+            <div class="date-footer">January 2026 • Memories That Last Forever</div>
+        </div>
+    </div>
+
+    <script src="flipbook-print-fixed.js" defer></script>
+</body>
+</html>
+
+
